@@ -9,7 +9,7 @@ const App = () => {
 
   // Fetch tasks when the app loads
   useEffect(() => {
-    axios.get('http://localhost:5000/read-task')
+    axios.get('https://full-stack-todo-backend-noyv.onrender.com/read-task') // Updated API URL
       .then((response) => setTasks(response.data))
       .catch((error) => console.error('Error fetching tasks:', error));
   }, []);
@@ -17,7 +17,7 @@ const App = () => {
   // Add a new task
   const handleAddTask = () => {
     if (!newTask.trim()) return; // Prevent adding empty tasks
-    axios.post('http://localhost:5000/new-task', { task: newTask })
+    axios.post('https://full-stack-todo-backend-noyv.onrender.com/new-task', { task: newTask }) // Updated API URL
       .then((response) => {
         setTasks(response.data);
         setNewTask('');
@@ -27,14 +27,14 @@ const App = () => {
 
   // Mark task as completed
   const handleCompleteTask = (id) => {
-    axios.post('http://localhost:5000/complete-task', { id })
+    axios.post('https://full-stack-todo-backend-noyv.onrender.com/complete-task', { id }) // Updated API URL
       .then((response) => setTasks(response.data))
       .catch((error) => console.error('Error marking task as completed:', error));
   };
 
   // Delete a task
   const handleDeleteTask = (id) => {
-    axios.post('http://localhost:5000/delete-task', { id })
+    axios.post('https://full-stack-todo-backend-noyv.onrender.com/delete-task', { id }) // Updated API URL
       .then((response) => setTasks(response.data))
       .catch((error) => console.error('Error deleting task:', error));
   };
